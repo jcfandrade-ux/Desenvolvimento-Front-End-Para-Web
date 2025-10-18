@@ -1,0 +1,178 @@
+/* CSS completo para index.html com marca de patas laterais */
+
+/* Importação da fonte local Lemon Milk Medium */
+@font-face {
+  font-family: 'Lemon Milk';
+  src: url('../assets/fonts/LEMONMILK-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Variáveis para design system */
+:root {
+  --cor-primaria: #364872;
+  --cor-secundaria: #2a9d8f;
+  --cor-terciaria: #f5f5f5;
+  --cor-quaternaria: #e0e0e0;
+  --cor-quinta: #333333;
+  --cor-fundo: #ffffff;
+
+  --fonte-lemonmilk: 'Lemon Milk', sans-serif;
+  --fonte-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --fonte-xs: 0.75rem;
+  --fonte-sm: 0.875rem;
+  --fonte-md: 1rem;
+  --fonte-lg: 1.25rem;
+  --fonte-xl: 1.5rem;
+
+  --espaco-8: 8px;
+  --espaco-16: 16px;
+  --espaco-24: 24px;
+  --espaco-32: 32px;
+  --espaco-48: 48px;
+  --espaco-64: 64px;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--fonte-md);
+  background-color: var(--cor-fundo);
+  color: var(--cor-quinta);
+  line-height: 1.6;
+  padding: var(--espaco-24);
+  position: relative;
+}
+
+/* Marcas de pata maiores e mais escuras nas laterais */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 80px;  /* maior largura */
+  height: 100vh;
+  background-image: url('../images/marca-pata.png');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 60px auto; /* maior tamanho da imagem */
+  opacity: 0.3; /* menor transparência, mais escuro */
+  filter: brightness(0.6); /* deixa imagem mais escura */
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  left: 0;
+}
+body::after {
+  right: 0;
+}
+
+/* Conteúdo acima das patas */
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Título principal */
+h1 {
+  font-family: var(--fonte-lemonmilk);
+  color: var(--cor-primaria);
+  text-align: center;
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: var(--espaco-24);
+}
+
+/* Centralizar e dimensionar logo */
+header img {
+  display: block;
+  margin: 0 auto var(--espaco-32);
+  max-width: 280px;
+  width: 100%;
+}
+
+/* Navegação */
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: var(--espaco-32);
+  margin-bottom: var(--espaco-32);
+}
+
+header nav ul li a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--cor-secundaria);
+  padding: var(--espaco-8) var(--espaco-16);
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+  background-color: var(--cor-primaria);
+  color: #fff;
+  outline: none;
+}
+
+/* Seções */
+main section {
+  max-width: 900px;
+  margin: 0 auto var(--espaco-48);
+}
+
+main section h2 {
+  font-size: var(--fonte-xl);
+  font-weight: 700;
+  margin-bottom: var(--espaco-16);
+  color: var(--cor-secundaria);
+}
+
+main section p,
+main section ul {
+  font-size: var(--fonte-md);
+  margin-bottom: var(--espaco-16);
+}
+
+main section ul li {
+  margin-bottom: var(--espaco-8);
+}
+
+/* Imagem equipe */
+main section img {
+  display: block;
+  margin: 0 auto;
+  max-width: 320px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: var(--cor-quaternaria);
+  font-size: var(--fonte-sm);
+  padding: var(--espaco-24) 0;
+  margin-top: var(--espaco-32);
+  background-color: var(--cor-fundo);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main section {
+    padding: 0 var(--espaco-16);
+  }
+
+  header nav ul {
+    gap: var(--espaco-16);
+  }
+}
